@@ -1,0 +1,49 @@
+{
+  "FileVersion": 3,
+  "EngineVersion": "5.4",
+  "Version": 17,
+  "VersionName": "3.0.9",
+  "FriendlyName": "Thumbnail Generator",
+  "Description": "Dynamic Thumbnail Generator, Create a thumbnail of any actor at runtime",
+  "Category": "Other",
+  "CreatedBy": "Mans Isaksson",
+  "CreatedByURL": "http://mansisaksson.com/view/about",
+  "DocsURL": "http://mansisaksson.com/view/thumbnail-generator-3.0",
+  "MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/43c213569ac94841b37d8bed1ab81ee5",
+  "SupportURL": "http://mansisaksson.com/view/support",
+  "CanContainContent": true,
+  "Modules": [
+    {
+      "Name": "ThumbnailGenerator",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault",
+      "WhitelistPlatforms": [
+        "Win64",
+        "Mac",
+        "Linux",
+        "Android",
+        "IOS"
+      ]
+    },
+    {
+      "Name": "ThumbnailGeneratorEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default",
+      "WhitelistPlatforms": [
+        "Win64",
+        "Mac",
+        "Linux"
+      ]
+    },
+    {
+      "Name": "ThumbnailGeneratorNodes",
+      "Type": "UncookedOnly",
+      "LoadingPhase": "PreLoadingScreen",
+      "WhitelistPlatforms": [
+        "Win64",
+        "Mac",
+        "Linux"
+      ]
+    }
+  ]
+}
