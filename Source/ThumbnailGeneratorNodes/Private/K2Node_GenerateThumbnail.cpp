@@ -59,7 +59,7 @@ void UK2Node_GenerateThumbnail::AllocateDefaultPins()
 	
 	// Move the Actor output pin to the end
 	const int32 ActorOutputPinIndex = Pins.IndexOfByKey(PreCaptureActorOutputPin);
-	Pins.RemoveAt(ActorOutputPinIndex, 1, false);
+	Pins.RemoveAt(ActorOutputPinIndex, 1, EAllowShrinking::No);
 	Pins.Add(PreCaptureActorOutputPin);
 }
 
