@@ -1229,12 +1229,12 @@ UTexture2D* FThumbnailGenerator::CaptureThumbnail(const FThumbnailSettings& Thum
 	CaptureComponent->CaptureScene();
 
 	// Clear any debug lines drawn by our thumbnail actor
-	if (ThumbnailScene->GetThumbnailWorld()->LineBatcher)
-		ThumbnailScene->GetThumbnailWorld()->LineBatcher->Flush();
-	if (ThumbnailScene->GetThumbnailWorld()->PersistentLineBatcher)
-		ThumbnailScene->GetThumbnailWorld()->PersistentLineBatcher->Flush();
-	if (ThumbnailScene->GetThumbnailWorld()->ForegroundLineBatcher)
-		ThumbnailScene->GetThumbnailWorld()->ForegroundLineBatcher->Flush();
+	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::World))
+		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::World)->Flush();
+	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::WorldPersistent))
+		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::WorldPersistent)->Flush();
+	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::Foreground))
+		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::Foreground)->Flush();
 
 	CaptureComponent->TextureTarget = nullptr;
 

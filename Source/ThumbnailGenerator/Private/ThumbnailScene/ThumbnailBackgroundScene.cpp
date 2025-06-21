@@ -659,5 +659,5 @@ void FThumbnailBackgroundScene::AddReferencedObjects(FReferenceCollector& Collec
 
 FString FThumbnailBackgroundScene::GetReferencerName() const
 {
-	return FString::Printf(TEXT("ThumbnailBackgroundScene_%"), *GetDebugName());
+	return FString::Printf(TEXT("ThumbnailBackgroundScene_%s"), *GetDebugName());
 }
