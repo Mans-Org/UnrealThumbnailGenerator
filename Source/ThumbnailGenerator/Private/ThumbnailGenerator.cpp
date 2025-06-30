@@ -26,6 +26,7 @@
 #include "Engine/Texture2D.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "Engine/SkeletalMesh.h"
+#include "Engine/World.h"
 #include "EngineUtils.h"
 #include "UObject/StrongObjectPtr.h"
 #include "Slate/WidgetRenderer.h"
@@ -1229,12 +1230,14 @@ UTexture2D* FThumbnailGenerator::CaptureThumbnail(const FThumbnailSettings& Thum
 	CaptureComponent->CaptureScene();
 
 	// Clear any debug lines drawn by our thumbnail actor
-	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::World))
-		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::World)->Flush();
-	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::WorldPersistent))
-		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::WorldPersistent)->Flush();
-	if (ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::Foreground))
-		ThumbnailScene->GetThumbnailWorld()->GetLineBatcher(UWorld::ELineBatcherType::Foreground)->Flush();
+	constexpr const UWorld::ELineBatcherType LineBatchersToFlush[] = 
+	{ 
+		UWorld::ELineBatcherType::World,
+		UWorld::ELineBatcherType::WorldPersistent,
+		UWorld::ELineBatcherType::Foreground,
+		UWorld::ELineBatcherType::ForegroundPersistent
+	};
+	ThumbnailScene->GetThumbnailWorld()->FlushLineBatchers(LineBatchersToFlush);
 
 	CaptureComponent->TextureTarget = nullptr;
 
