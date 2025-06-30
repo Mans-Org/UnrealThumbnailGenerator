@@ -212,9 +212,9 @@ void UK2Node_GenerateThumbnailAsync::ExpandNode(class FKismetCompilerContext& Co
 						if (Schema->DoesDefaultValueMatch(*InPin, DefaultValueAsString))
 							return false;
 					}
-					else if (ClassToSpawn->ClassDefaultObject)
+					else if (ClassToSpawn->GetDefaultObject<UObject>())
 					{
-						FBlueprintEditorUtils::PropertyValueToString(Property, (uint8*)ClassToSpawn->ClassDefaultObject, DefaultValueAsString);
+						FBlueprintEditorUtils::PropertyValueToString(Property, reinterpret_cast<uint8*>(ClassToSpawn->GetDefaultObject<UObject>()), DefaultValueAsString);
 						if (DefaultValueAsString == InPin->GetDefaultAsString())
 							return false;
 					}
