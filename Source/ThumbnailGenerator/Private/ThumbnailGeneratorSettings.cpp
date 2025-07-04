@@ -4,7 +4,6 @@
 #include "ThumbnailGeneratorModule.h"
 #include "ThumbnailGeneratorScript.h"
 #include "ThumbnailGenerator.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 
 #include "UObject/ConstructorHelpers.h"
 #include "Components/SkinnedMeshComponent.h"

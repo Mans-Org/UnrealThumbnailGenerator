@@ -11,7 +11,6 @@
 #include "BlueprintCompilationManager.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 #include "ThumbnailGenerator.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 
 #define LOCTEXT_NAMESPACE "K2Node_GenerateThumbnailAsync"
 

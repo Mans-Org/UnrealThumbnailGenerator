@@ -3,7 +3,6 @@
 #include "SThumbnailGeneratorEditor.h"
 #include "ThumbnailGeneratorEditor.h"
 #include "ThumbnailGenerator.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 
 #include "Widgets/Layout/SBorder.h"
 #include "Widgets/Layout/SSplitter.h"

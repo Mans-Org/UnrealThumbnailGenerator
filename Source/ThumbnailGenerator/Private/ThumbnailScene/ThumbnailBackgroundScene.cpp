@@ -4,7 +4,6 @@
 #include "ThumbnailGeneratorModule.h"
 #include "ThumbnailPreviewScene.h"
 #include "ThumbnailGeneratorInterfaces.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 
 #include "Components/SkyLightComponent.h"
 #include "Components/DirectionalLightComponent.h"

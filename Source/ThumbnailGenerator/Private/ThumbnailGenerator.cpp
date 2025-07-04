@@ -6,7 +6,6 @@
 #include "ThumbnailGeneratorScript.h"
 #include "ThumbnailScene/ThumbnailPreviewScene.h"
 #include "ThumbnailScene/ThumbnailBackgroundScene.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 #include "CacheProvider.h"
 
 #include "Components/SceneCaptureComponent2D.h"
@@ -710,9 +709,6 @@ void FThumbnailGenerator::InitializeThumbnailWorld(const FThumbnailBackgroundSce
 	CaptureComponent->PrimitiveRenderMode          = ESceneCapturePrimitiveRenderMode::PRM_RenderScenePrimitives;
 	CaptureComponent->CompositeMode                = ESceneCaptureCompositeMode::SCCM_Overwrite;
 	CaptureComponent->CaptureSource                = GetCaptureSource();
-#if ENGINE_VERSION_LESS_THAN(5, 1)
-	CaptureComponent->bDisableFlipCopyGLES         = true;
-#endif
 	CaptureComponent->bAlwaysPersistRenderingState = true;
 	CaptureComponent->TextureTarget                = nullptr;
 	CaptureComponent->bConsiderUnrenderedOpaquePixelAsFullyTranslucent = true;

@@ -5,16 +5,11 @@
 #include "ThumbnailGeneratorModule.h"
 #include "ThumbnailGenerator.h"
 #include "SThumbnailGeneratorEditor.h"
-#include "ThumbnailGeneratorCompatibilityLayer.h"
 #include "ISettingsModule.h"
 #include "ISettingsContainer.h"
 #include "ISettingsSection.h"
 #include "ObjectTools.h"
-#if ENGINE_VERSION_HIGHER_THAN(5, 0)
 #include "AssetRegistry/AssetRegistryModule.h"
-#else
-#include "AssetRegistryModule.h"
-#endif
 #include "Kismet/KismetSystemLibrary.h"
 #include "Engine/Texture2D.h"
 #include "Engine/Selection.h"
@@ -318,14 +313,8 @@ void FThumbnailGeneratorEditorModule::RegisterLevelEditorCommandExtensions()
 
 				if (Actor->GetInstanceComponents().Num() > 0)
 				{
-					#if ENGINE_VERSION_HIGHER_THAN(4, 25)
 					//! NOTE: Defaults for FAddComponentsToBlueprintParams match what we want, so can skip the parameter
 					FKismetEditorUtilities::AddComponentsToBlueprint(NewBlueprint, Actor->GetInstanceComponents());
-					#elif ENGINE_VERSION_HIGHER_THAN(4, 24)
-					FKismetEditorUtilities::AddComponentsToBlueprint(NewBlueprint, Actor->GetInstanceComponents(), FKismetEditorUtilities::EAddComponentToBPHarvestMode::None, nullptr, false);
-					#else
-					FKismetEditorUtilities::AddComponentsToBlueprint(NewBlueprint, Actor->GetInstanceComponents(), false, nullptr, false);
-					#endif
 				}
 
 				if (NewBlueprint->GeneratedClass != nullptr)
@@ -517,13 +506,9 @@ void FThumbnailGeneratorEditorModule::UnregisterContentBrowserCommandExtensions(
 
 void FThumbnailGeneratorEditorModule::OpenThumbnailGenerator(const TSubclassOf<AActor> ActorClass)
 {
-#if ENGINE_VERSION_HIGHER_THAN(4, 25)
 	TSharedPtr<SDockTab> NewTab = FGlobalTabmanager::Get()->TryInvokeTab(ThumbnailGenEditorTabName);
 	if (!NewTab.IsValid())
 		return;
-#else
-	TSharedRef<SDockTab> NewTab = FGlobalTabmanager::Get()->InvokeTab(ThumbnailGenEditorTabName);
-#endif
 
 	TSharedRef<SThumbnailGeneratorEditor> ThumbnailGeneratorEditor = StaticCastSharedRef<SThumbnailGeneratorEditor>(NewTab->GetContent());
 	ThumbnailGeneratorEditor->ResetThumbnailGeneratorEditorSettings();
