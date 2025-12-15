@@ -769,7 +769,7 @@ UTexture2D* FThumbnailGenerator::CaptureThumbnail(const FThumbnailSettings& Thum
 
 		const static auto CalcActorLocalThumbnailBounds = [](AActor* InActor, const FThumbnailSettings& InThumbnailSettings, bool bDrawDebug)->FBox
 		{
-			const static TFunction<bool(UActorComponent*, const TSet<UClass*>&)> IsBlacklisted = [](UActorComponent* InComponent, const TSet<UClass*>& Blacklist)->bool
+			const static TFunction<bool(UActorComponent*, const TSet<TObjectPtr<UClass>>&)> IsBlacklisted = [](UActorComponent* InComponent, const TSet<TObjectPtr<UClass>>& Blacklist)->bool
 			{
 				for (UClass* BlacklistedClass : Blacklist)
 				{

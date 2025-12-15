@@ -13,7 +13,7 @@ class UThumbnailBackgroundLevelStreamingFixer : public UObject
 private:
 	
 	UPROPERTY()
-	class ULevelStreaming* LevelStreaming;
+	TObjectPtr<class ULevelStreaming> LevelStreaming;
 
 	int32 InstanceID;
 

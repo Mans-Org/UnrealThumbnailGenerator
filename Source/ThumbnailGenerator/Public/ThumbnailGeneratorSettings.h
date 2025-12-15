@@ -302,7 +302,7 @@ public:
 
 	// Components of this type will be ignored when calculating the actor bounding box for framing (Ignored when using custom camera transform)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Thumbnail Actor", meta=(EditCondition = "bOverride_ComponentBoundsBlacklist"))
-	TSet<UClass*> ComponentBoundsBlacklist;
+	TSet<TObjectPtr<UClass>> ComponentBoundsBlacklist;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Thumbnail Actor", meta=(EditCondition = "bOverride_bIncludeHiddenComponentsInBounds"))
 	bool bIncludeHiddenComponentsInBounds;
@@ -418,7 +418,7 @@ class THUMBNAILGENERATOR_API UThumbnailGeneratorSettings : public UObject
 	GENERATED_BODY()
 private:
 	UPROPERTY()
-	TArray<UObject*> AssetRefs;
+	TArray<TObjectPtr<UObject>> AssetRefs;
 
 public:
 
